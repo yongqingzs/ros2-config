@@ -44,6 +44,7 @@ RUN sudo apt-get update && \
     ros-$ROS_DISTRO-navigation2 \
     ros-$ROS_DISTRO-turtle-nest \
     ros-$ROS_DISTRO-tf-transformations \
+    ros-jazzy-ros-gz \
     && sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
 
