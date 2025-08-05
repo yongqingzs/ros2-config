@@ -27,6 +27,9 @@ RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
     wget \
     vim \
+    gdb \
+    python3 \
+    python3-pip \
     python3-colcon-clean \
     && sudo apt-get clean && \
     sudo rm -rf /var/lib/apt/lists/*
