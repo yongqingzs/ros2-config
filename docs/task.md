@@ -9,3 +9,11 @@
 3. 说明我该如何使用它。
 4. 说明你觉得应当说明的内容。
 5. 将整理好的内容输出到 docs 下的 IssacLab.md 中。
+
+## task2
+依据 ocs2_ros2/start.md、jazzy 的内容，完成以下任务:
+1. 完成类似 jazzy 文件夹下的镜像建立、docker compose 管理
+2. 需要符合 start.md 中的源码构建
+3. 在 ocs2_ros2 下输出说明文档，包括
+- 该镜像是否兼容 arm64、x64
+- 该容器通过 docker run 启用时的命令行
