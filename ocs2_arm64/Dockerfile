@@ -85,11 +85,19 @@ RUN cd ${QUAD_WS} && \
     . /opt/ros/${ROS_DISTRO}/setup.bash && \
     MAKEFLAGS="-j4" colcon build --packages-up-to unitree_guide_controller go2_description keyboard_input --symlink-install
 
-# Copy CMakeLists.txt to ocs2_sqp/hpipm_colcon
+# Build ocs2_quadruped_controller
+RUN cd ${QUAD_WS} && \
+    . /opt/ros/${ROS_DISTRO}/setup.bash && \
+    . install/setup.bash && \
+    MAKEFLAGS="-j4" colcon build --packages-up-to ocs2_qp_solver blasfeo_colcon --symlink-install
+
 COPY ocs2_arm64/replace/hpipm_colcon/CMakeLists.txt \
         ${QUAD_WS}/src/ocs2_ros2/mpc/ocs2_sqp/hpipm_colcon/CMakeLists.txt
 
-# Build ocs2_quadruped_controller
+RUN cd ${QUAD_WS} && \
+    . /opt/ros/${ROS_DISTRO}/setup.bash && \
+    MAKEFLAGS="-j4" colcon build --packages-select hpipm_colcon
+
 RUN cd ${QUAD_WS} && \
     . /opt/ros/${ROS_DISTRO}/setup.bash && \
     . install/setup.bash && \
@@ -155,3 +163,4 @@ RUN sudo chmod +x /ros_entrypoint.sh
 ENTRYPOINT ["/ros_entrypoint.sh"]
 
 CMD ["bash"]
+

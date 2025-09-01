@@ -45,16 +45,15 @@ set(BUILD_SHARED_LIBS ON CACHE STRING "Build shared libraries" FORCE)
 set(HPIPM_TESTING OFF CACHE BOOL "Examples enabled")
 
 # Download & build source
-if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
-    set(TARGET "GENERIC")
-endif()
+set(TARGET "GENERIC" CACHE STRING "Target architecture" FORCE)
 FetchContent_Declare(hpipmDownload
         GIT_REPOSITORY https://github.com/giaf/hpipm
         GIT_TAG ${GIT_TAG}
         UPDATE_COMMAND ""
         SOURCE_DIR ${HPIPM_DOWNLOAD_DIR}
         BINARY_DIR ${HPIPM_BUILD_DIR}
-        BUILD_COMMAND $(MAKE)  TARGET=${TARGET}
+        TARGET=${TARGET}
+        BUILD_COMMAND $(MAKE)
         INSTALL_COMMAND "$(MAKE) install"
 )
 FetchContent_MakeAvailable(hpipmDownload)
