@@ -2,3 +2,4 @@ __pycache__/
 .isaac-lab-docker-history
 .container.cfg
 .vscode/
+tmp/

@@ -23,4 +23,9 @@ services:
       - DISPLAY
       - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=42
+    cap_add:
+      - sys_nice
+    ulimits:
+      rtprio: 99
+      memlock: -1
     command: bash

@@ -1,19 +1,19 @@
 services:
-  humble_ros2:
-    image: humble_ros2
+  rl_sar_jazzy:
+    image: rl_sar_jazzy
     build:
       context: ..
-      dockerfile: humble/Dockerfile
-    container_name: humble_ros2
+      dockerfile: rl_sar_jazzy/Dockerfile
+    container_name: rl_sar_jazzy
     stop_signal: SIGINT
     network_mode: host
     privileged: true
     stdin_open: true
-    runtime: nvidia
+    #runtime: nvidia
     tty: true
-    user: humble
+    user: sar
     volumes:
-      - $HOME/humble_ws/src:/home/humble/humble_ws/src
+      # - $HOME/jazzy_ws/src:/home/sar/jazzy_ws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
     environment:
       - NVIDIA_VISIBLE_DEVICES=all # Makes all NVIDIA devices visible to the container
@@ -22,7 +22,7 @@ services:
       - __GLX_VENDOR_LIBRARY_NAME=nvidia # Specifies the GLX vendor library to use (NVIDIA)
       - DISPLAY
       - QT_X11_NO_MITSHM=1
-      - ROS_DOMAIN_ID=42
+      - ROS_DOMAIN_ID=66
     cap_add:
       - sys_nice
     ulimits:
