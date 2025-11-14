@@ -1,0 +1,13 @@
+## install
+```bash
+wget -c "https://developer.nvidia.com/isaac-gym-preview-4" -O IsaacGym_Preview_4.tar.gz
+
+docker build -t himloco .
+
+docker run -it --gpus all --network host \
+    --name himloco \
+    -e DISPLAY=$DISPLAY \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    himloco:latest /bin/bash
+
+```
