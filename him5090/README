@@ -1,0 +1,27 @@
+## install
+```bash
+wget -c "https://developer.nvidia.com/isaac-gym-preview-4" -O IsaacGym_Preview_4.tar.gz
+
+docker build -t him2div .
+# 从头构建
+docker build --no-cache -t him2div .
+
+# 测试镜像
+docker run -it --rm \
+    --gpus all \
+    -e DISPLAY=$DISPLAY \
+    -e NVIDIA_DRIVER_CAPABILITIES=all \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    --network host \
+    him2div:latest /bin/bash
+
+# 实际容器
+docker run -it \
+    --name him2div \
+    --gpus all \
+    -e DISPLAY=$DISPLAY \
+    -e NVIDIA_DRIVER_CAPABILITIES=all \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    --network host \
+    him2div:latest /bin/bash
+```

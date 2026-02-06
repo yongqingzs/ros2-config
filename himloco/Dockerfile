@@ -45,7 +45,7 @@ RUN tar -xzf IsaacGym_Preview_4_Package.tar.gz && \
     cd isaacgym/python && source activate himloco && pip install -e .
 
 # 克隆 HIMLoco 源码
-RUN git clone https://github.com/OpenRobotLab/HIMLoco.git /workspace/HIMLoco
+RUN git clone https://ghfast.top/https://github.com/OpenRobotLab/HIMLoco.git /workspace/HIMLoco
 
 # 安装 HIMLoco (rsl_rl & legged_gym)
 RUN source activate himloco && \
